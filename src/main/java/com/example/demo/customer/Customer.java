@@ -8,9 +8,17 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Customer {
     @Id
     private Long id;
@@ -26,8 +34,8 @@ public class Customer {
     @Email()
     private String email;
 
-    public Customer(Long id, String name, String password, String email) {
-        this.id = id;
+    public Customer(String name, String password, String email) {
+
         this.name = name;
         this.password = password;
         this.email = email;
@@ -49,9 +57,6 @@ public class Customer {
 
     public String getEmail() {
         return email;
-    }
-
-    public Customer() {
     }
 
     @Override
